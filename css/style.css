@@ -1,0 +1,138 @@
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, header, footer, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 16px;
+  font-family: "roboto", sans-serif;
+  color: #fff;
+  background-color: #242B33;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+.container {
+  width: 1440px;
+  margin: 0 auto;
+}
+
+span {
+  font-weight: 700;
+  color: #b4002a;
+}
+
+.header {
+  width: 100%;
+  height: 60px;
+  background: #b4002a;
+  position: relative;
+}
+
+.header__buttons {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+@-webkit-keyframes button_pulsate {
+  0% {
+    box-shadow: 0 0 25px #242B33, 0 0 25px #a19e9e;
+  }
+}
+
+@keyframes button_pulsate {
+  0% {
+    box-shadow: 0 0 25px #242B33, 0 0 25px #a19e9e;
+  }
+}
+.button {
+  position: relative;
+  background: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000000;
+  border-radius: 6px;
+  transition: 0.4s;
+  border: 2px solid #242B33;
+  padding: 10px 40px;
+  z-index: 1;
+  overflow: hidden;
+  letter-spacing: 2px;
+  background: #ffffff;
+  margin: 0 10px;
+}
+
+.button:hover {
+  -webkit-animation: button_pulsate 1s ease-in-out;
+          animation: button_pulsate 1s ease-in-out;
+  color: #ffffff;
+  background-color: #242B33;
+}
+
+.carts__container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.carts__block {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 10px;
+  gap: 10px;
+}
+
+.cart {
+  flex: 0 24%;
+  background: #b4002a;
+  min-width: 200px;
+  position: relative;
+}
+
+h2 {
+  height: 40px;
+  text-align: center;
+  padding-top: 8px;
+  border-bottom: 1px solid #fff;
+}
+
+.cart__label {
+  display: flex;
+  min-height: 40px;
+  padding: 0 0 0 10px;
+  align-items: center;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.cart__text {
+  display: flex;
+  min-height: 50px;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}/*# sourceMappingURL=style.css.map */
