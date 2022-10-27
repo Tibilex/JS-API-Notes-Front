@@ -1,3 +1,81 @@
+document.addEventListener('click', (event) =>{
+    const type = event.target.dataset.type;
+
+    if(type === 'showAll'){
+        getAllNotes();
+    }
+    if(type === 'showid'){
+        let getId = prompt('Enter "ID" to search note');
+        getToId(getId);
+    }
+    if(type === 'add'){
+        let label = prompt('Enter note "Label"');
+        let text = prompt('Enter Note "Text"');
+        addNote(label, text)
+    }
+    if(type === 'remove'){
+        let inputid = prompt('Enter User "ID"');
+        deleteNote(inputid);     
+    }
+});
+
+function getAllNotes(){
+    deleteItems();
+      
+    $.get("http://bipihok184-001-site1.itempurl.com/Admin/GetAll")
+     .done((data) =>{
+        constructCart(data);                   
+    })
+     .fail(() =>{
+        alert("ERROR");
+        console.warn("GETALL REQUEST ERROR");
+    });
+};
+
+function getToId(id){
+    deleteItems();
+    $.get("http://bipihok184-001-site1.itempurl.com/Admin/GetId?id=" + id)
+     .done((data) =>{
+        if(data != null){
+            constructSingleCart(data);                   
+        }
+        else{
+            alert('ID is not found');
+        }
+    })
+     .fail(() =>{
+        alert("ID ERROR");
+        console.warn("GETID REQUEST ERROR");
+    });
+}
+
+function addNote(label, text){
+    $.post("http://bipihok184-001-site1.itempurl.com/Admin/Add Note",
+    {
+        label: label,
+        text: text,       
+    }).done(function(data){
+        alert(`Successfully Added\nNew Note ID: ${data}`);
+        console.log("Successfully Added!");
+        getAllNotes();
+    })
+};
+
+function deleteNote(id){
+    $.ajax({
+        url: "http://bipihok184-001-site1.itempurl.com/Admin/Delete Note?id=" + id,
+        type: "DELETE",
+        success: function(){
+            alert("Delete successfully!");
+            getAllNotes();
+            console.log("Delete successfully!");
+        },
+        error: function(){
+            alert("ERROR");
+            console.warn("DELETE ERROR");
+        }
+    });
+};
 
 function deleteItems() { 
     const deleteElement = document.querySelector('.carts__container');
@@ -30,7 +108,5 @@ function constructCart(data){
         cart.append(cartText);
         cartBlock.prepend(cart);
         container.append(cartBlock);
-
-
     };
 };
