@@ -110,3 +110,30 @@ function constructCart(data){
         container.append(cartBlock);
     };
 };
+
+function constructSingleCart(data){
+    let container = document.querySelector('.carts__container');
+
+    let cartBlock = document.createElement('div');
+    cartBlock.setAttribute('class', 'carts__block');
+
+    let cart = document.createElement('div');
+    cart.setAttribute('class', 'cart');
+
+    let h2 = document.createElement('h2');
+    h2.innerText = `ID: ${data.id}`;
+
+    let cartLabel = document.createElement('div');
+    cartLabel.setAttribute('class', 'cart__label');
+    cartLabel.innerText = `${data.label}`;
+
+    let cartText = document.createElement('div');
+    cartText.setAttribute('class', 'cart__text');
+    cartText.innerText = `${data.text}`;
+
+    cart.append(h2);
+    cart.append(cartLabel);
+    cart.append(cartText);
+    cartBlock.prepend(cart);
+    container.append(cartBlock);   
+};
